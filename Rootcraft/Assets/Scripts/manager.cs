@@ -36,7 +36,9 @@ public class Manager : MonoBehaviour
         if (Time.time - timer > spawnTimer)
         {
             int rootIndex = UnityEngine.Random.Range(0, roots.Count);
-            Instantiate(roots[rootIndex], spawnPosition, Quaternion.identity);
+            GameObject clone = (GameObject)Instantiate(roots[rootIndex], spawnPosition, Quaternion.identity);
+
+            Destroy(clone, 2);
 
             spawnPosition = new Vector2(screenSize.x * UnityEngine.Random.Range(leftSpawnScreenPercentageBoundarie, rightSpawnScreenPercentageBoundarie), 10);
 
