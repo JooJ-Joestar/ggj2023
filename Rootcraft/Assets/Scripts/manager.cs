@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    // Potato: 0
+    // Beat: 0
     // Carrot: 1
-    // Beat: 2
+    // Potato: 2
     // Cassava: 3
-    // Radish: 4
+    // Yam: 4
 
     int[][] recipes = new int[][]
     {
@@ -32,16 +32,23 @@ public class Manager : MonoBehaviour
     };
 
     public List<GameObject> roots;
+    public GameObject topOrderIcon;
     Vector2 spawnPosition;
     Vector2 screenSize;
     float timer = 0.0f;
+    float timer2 = 0.0f;
     float spawnTimer = 4.0f;
+    float orderTimer = 3.0f;
+    bool firstOrder = true;
     float leftSpawnScreenPercentageBoundarie;
     float rightSpawnScreenPercentageBoundarie;
+    float orderIconRightBoundarie = 0.456f;
+    float spaceBetweenIcons = 0.05f;
+    List<int[]> orders; // holds all orders from the recipes array
 
-    // Start is called before the first frame update
     void Start()
     {
+        orders = new List<int[]>();
         timer = Time.time;
         leftSpawnScreenPercentageBoundarie = 0.06f;
         rightSpawnScreenPercentageBoundarie = 0.44f;
@@ -50,10 +57,10 @@ public class Manager : MonoBehaviour
         spawnPosition = new Vector2(screenSize.x * UnityEngine.Random.Range(leftSpawnScreenPercentageBoundarie, rightSpawnScreenPercentageBoundarie), 10);
     }
 
-    // Update is called once per frame
     void Update()
     {
         SpawnRoot();
+        addOrder();
     }
 
     void SpawnRoot()
@@ -73,5 +80,43 @@ public class Manager : MonoBehaviour
             }
             timer = Time.time;
         }
+    }
+
+    void addOrder()
+    {
+        if (Time.time - timer2 > orderTimer)
+        {
+            if (orders.Count < 9)
+            {
+                orders.Add(recipes[UnityEngine.Random.Range(0, recipes.Length)]);
+            } else
+            {
+                Debug.Log("You Lose!");
+            }
+
+            float temp = orderIconRightBoundarie;
+            for (int i = 0; i < orders.Count; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(topOrderIcon, new Vector2(screenSize.x * temp, -1.5f), Quaternion.identity);
+                temp -= spaceBetweenIcons;
+            }
+
+            if (firstOrder)
+            {
+                orderTimer = 10.1f;
+                firstOrder = false;
+            }
+
+            if (orderTimer > 1.0f)
+            {
+                orderTimer -= 0.2f;
+            }
+            timer2 = Time.time;
+        }
+    }
+
+    void removeOrder()
+    {
+
     }
 }

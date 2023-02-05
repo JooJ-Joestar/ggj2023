@@ -613,6 +613,7 @@ MonoBehaviour:
   - {fileID: 5944430293115354172, guid: c3150e978e663f04190aa2e71b33ee19, type: 3}
   - {fileID: 5944430293115354172, guid: 8de80116056b52443b28bc1610c12d23, type: 3}
   - {fileID: 5944430293115354172, guid: f3f7ddfe4f01a184e865b44426bc0d34, type: 3}
+  topOrderIcon: {fileID: 6194765495075770001, guid: d4ecffb8b301ea544a919e433cbdbc27, type: 3}
 --- !u!1 &751230043
 GameObject:
   m_ObjectHideFlags: 0
