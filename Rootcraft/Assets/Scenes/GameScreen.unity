@@ -247,7 +247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 165708192}
   - component: {fileID: 165708193}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WallCollider (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,9 +308,9 @@ GameObject:
   - component: {fileID: 237759745}
   - component: {fileID: 237759744}
   - component: {fileID: 237759747}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: cauldron
-  m_TagString: Untagged
+  m_TagString: Cauldron
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,7 +455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 544821699}
   - component: {fileID: 544821700}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WallCollider (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,15 +604,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 571550484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 955c2a5a68056564288f69ab24f5ef75, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a8b4adece167b241a6c89fa9bbb0fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roots:
   - {fileID: 1624318456506205263, guid: 037bc55d238a7394b80bfed6baabb564, type: 3}
   - {fileID: 3184439342535892810, guid: 4480879cb69da784889ff4a6f5b60b42, type: 3}
+  - {fileID: 5944430293115354172, guid: f3f7ddfe4f01a184e865b44426bc0d34, type: 3}
   - {fileID: 5944430293115354172, guid: c3150e978e663f04190aa2e71b33ee19, type: 3}
   - {fileID: 5944430293115354172, guid: 8de80116056b52443b28bc1610c12d23, type: 3}
-  - {fileID: 5944430293115354172, guid: f3f7ddfe4f01a184e865b44426bc0d34, type: 3}
 --- !u!1 &751230043
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 751230044}
   - component: {fileID: 751230045}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WallCollider (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,7 +680,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 871286847}
-  m_Layer: 0
+  - component: {fileID: 871286848}
+  m_Layer: 3
   m_Name: WallColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,6 +708,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &871286848
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871286846}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1057488800
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,7 +904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338214459}
   - component: {fileID: 1338214460}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WallCollider (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -967,6 +1020,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1389742487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389742488}
+  - component: {fileID: 1389742489}
+  m_Layer: 6
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1389742488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389742487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.001, y: 0.32, z: 0}
+  m_LocalScale: {x: 0.05887, y: 0.06878, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1508700912}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1389742489
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389742487}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1476032139
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,7 +1162,7 @@ SpriteRenderer:
   m_SortingLayerID: -476561051
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5159b387cefd1284285ce5686a59fd94, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d27016bf1735ea4b9823ae701c5110c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1066,7 +1203,8 @@ GameObject:
   - component: {fileID: 1508700914}
   - component: {fileID: 1508700913}
   - component: {fileID: 1508700918}
-  m_Layer: 0
+  - component: {fileID: 1508700919}
+  m_Layer: 6
   m_Name: player_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1222,8 @@ Transform:
   m_LocalPosition: {x: -5.04, y: 0.81, z: 10}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1389742488}
   m_Father: {fileID: 571550489}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1164,7 +1303,7 @@ SpriteRenderer:
   m_SortingLayerID: 430727287
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 610842531, guid: bc2d3654854f0b149a0bab55f172efe6, type: 3}
+  m_Sprite: {fileID: 906433858, guid: e49474144d65b844e9e6c5b4461081d8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1234,6 +1373,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c87f7c7dd36feb4083dccc8247e5654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GrabPoint: {fileID: 1389742488}
+  GrabbedObjectYValue: 0
+--- !u!114 &1508700919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508700911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c87f7c7dd36feb4083dccc8247e5654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrabPoint: {fileID: 0}
+  GrabbedObjectYValue: 0
 --- !u!1 &1926353694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2030372292}
   - component: {fileID: 2030372293}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WallCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
