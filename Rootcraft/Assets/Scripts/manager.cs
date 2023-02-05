@@ -24,14 +24,11 @@ public class Manager : MonoBehaviour
         new int[] { 3, 1, 3, 1 },
         new int[] { 2, 3, 3, 4 },
         new int[] { 1, 3, 1, 2 },
-        new int[] { 0, 2, 1, 2 },
-        new int[] { 4, 1, 3, 0, 4 },
-        new int[] { 2, 4, 2, 4, 3 },
-        new int[] { 0, 4, 2, 4, 0 },
-        new int[] { 1, 0, 0, 2, 3 }
+        new int[] { 0, 2, 1, 2 }
     };
 
     public List<GameObject> roots;
+    public List<GameObject> rootsImages;
     public GameObject topOrderIcon;
     Vector2 spawnPosition;
     Vector2 screenSize;
@@ -45,10 +42,12 @@ public class Manager : MonoBehaviour
     float orderIconRightBoundarie = 0.456f;
     float spaceBetweenIcons = 0.05f;
     List<int[]> orders; // holds all orders from the recipes array
+    List<GameObject> ordersIcons;
 
     void Start()
     {
         orders = new List<int[]>();
+        ordersIcons = new List<GameObject>();
         timer = Time.time;
         leftSpawnScreenPercentageBoundarie = 0.06f;
         rightSpawnScreenPercentageBoundarie = 0.44f;
@@ -61,6 +60,10 @@ public class Manager : MonoBehaviour
     {
         SpawnRoot();
         addOrder();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            removeOrder();
+        }
     }
 
     void SpawnRoot()
@@ -86,18 +89,57 @@ public class Manager : MonoBehaviour
     {
         if (Time.time - timer2 > orderTimer)
         {
+            int recipeIndex = UnityEngine.Random.Range(0, recipes.Length);
+
             if (orders.Count < 9)
             {
-                orders.Add(recipes[UnityEngine.Random.Range(0, recipes.Length)]);
+                orders.Add(recipes[recipeIndex]);
             } else
             {
                 Debug.Log("You Lose!");
             }
 
             float temp = orderIconRightBoundarie;
+
             for (int i = 0; i < orders.Count; i++)
             {
                 GameObject obj = (GameObject)Instantiate(topOrderIcon, new Vector2(screenSize.x * temp, -1.5f), Quaternion.identity);
+                ordersIcons.Add(obj);
+                int numberOfIngredients = orders[i].Length;
+                float offset = 0.3f;
+
+                if (numberOfIngredients == 2)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+
+                } else if (numberOfIngredients == 3)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y + offset), Quaternion.identity);
+                    GameObject rootImage3 = (GameObject)Instantiate(rootsImages[orders[i][2]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y + offset), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+                    rootImage3.transform.parent = obj.transform;
+
+                    
+                } else if (numberOfIngredients == 4)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage3 = (GameObject)Instantiate(rootsImages[orders[i][2]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y + offset), Quaternion.identity);
+                    GameObject rootImage4 = (GameObject)Instantiate(rootsImages[orders[i][3]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y + offset), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+                    rootImage3.transform.parent = obj.transform;
+                    rootImage4.transform.parent = obj.transform;
+                }
+
                 temp -= spaceBetweenIcons;
             }
 
@@ -117,6 +159,61 @@ public class Manager : MonoBehaviour
 
     void removeOrder()
     {
+        if (orders.Count > 0)
+        {
+            float temp = orderIconRightBoundarie;
+            orders.RemoveAt(0);
+            Destroy(ordersIcons[0]);
+            ordersIcons.RemoveAt(0);
 
+            for (int i = 0; i < ordersIcons.Count; i++)
+            {
+                Destroy(ordersIcons[i]);
+            }
+
+            for (int i = 0; i < orders.Count; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(topOrderIcon, new Vector2(screenSize.x * temp, -1.5f), Quaternion.identity);
+                ordersIcons.Add(obj);
+                int numberOfIngredients = orders[i].Length;
+                float offset = 0.3f;
+
+                if (numberOfIngredients == 2)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+
+                }
+                else if (numberOfIngredients == 3)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y + offset), Quaternion.identity);
+                    GameObject rootImage3 = (GameObject)Instantiate(rootsImages[orders[i][2]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y + offset), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+                    rootImage3.transform.parent = obj.transform;
+
+
+                }
+                else if (numberOfIngredients == 4)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage3 = (GameObject)Instantiate(rootsImages[orders[i][2]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y + offset), Quaternion.identity);
+                    GameObject rootImage4 = (GameObject)Instantiate(rootsImages[orders[i][3]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y + offset), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+                    rootImage3.transform.parent = obj.transform;
+                    rootImage4.transform.parent = obj.transform;
+                }
+
+                temp -= spaceBetweenIcons;
+            }
+        }
     }
 }

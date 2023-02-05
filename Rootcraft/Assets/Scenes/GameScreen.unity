@@ -614,6 +614,12 @@ MonoBehaviour:
   - {fileID: 5944430293115354172, guid: c3150e978e663f04190aa2e71b33ee19, type: 3}
   - {fileID: 5944430293115354172, guid: 8de80116056b52443b28bc1610c12d23, type: 3}
   - {fileID: 5944430293115354172, guid: f3f7ddfe4f01a184e865b44426bc0d34, type: 3}
+  rootsImages:
+  - {fileID: 6677984467844507529, guid: 46d46ebb01b1d794ab43649454a6aa2c, type: 3}
+  - {fileID: 6677984467844507529, guid: 1952a6c6f8152de46ad8180121b2c87e, type: 3}
+  - {fileID: 6677984467844507529, guid: 9d312b70bdeac5f49a4a1f04e0c1f668, type: 3}
+  - {fileID: 6677984467844507529, guid: 6998430fb1621c74ca84c9739cd23098, type: 3}
+  - {fileID: 6677984467844507529, guid: 8d58aafe183e64c48b3ff6bf1ede9560, type: 3}
   topOrderIcon: {fileID: 6194765495075770001, guid: d4ecffb8b301ea544a919e433cbdbc27, type: 3}
 --- !u!1 &751230043
 GameObject:
