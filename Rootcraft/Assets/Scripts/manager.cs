@@ -17,9 +17,8 @@ public class Manager : MonoBehaviour
     void Start()
     {
         timer = Time.time;
-        float rootsDropHorizontalArea = Screen.width * 0.35f;
-        leftSpawnScreenPercentageBoundarie = 0.05f;
-        rightSpawnScreenPercentageBoundarie = 0.35f;
+        leftSpawnScreenPercentageBoundarie = 0.1f;
+        rightSpawnScreenPercentageBoundarie = 0.4f;
 
         screenSize = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         spawnPosition = new Vector2(screenSize.x * UnityEngine.Random.Range(leftSpawnScreenPercentageBoundarie, rightSpawnScreenPercentageBoundarie), 10);
@@ -38,7 +37,7 @@ public class Manager : MonoBehaviour
             int rootIndex = UnityEngine.Random.Range(0, roots.Count);
             GameObject clone = (GameObject)Instantiate(roots[rootIndex], spawnPosition, Quaternion.identity);
 
-            Destroy(clone, 2);
+            Destroy(clone, 10);
 
             spawnPosition = new Vector2(screenSize.x * UnityEngine.Random.Range(leftSpawnScreenPercentageBoundarie, rightSpawnScreenPercentageBoundarie), 10);
 
