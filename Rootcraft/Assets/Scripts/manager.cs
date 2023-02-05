@@ -35,7 +35,7 @@ public class Manager : MonoBehaviour
     Vector2 spawnPosition;
     Vector2 screenSize;
     float timer = 0.0f;
-    float spawnTimer = 3.0f;
+    float spawnTimer = 4.0f;
     float leftSpawnScreenPercentageBoundarie;
     float rightSpawnScreenPercentageBoundarie;
 
@@ -43,7 +43,7 @@ public class Manager : MonoBehaviour
     void Start()
     {
         timer = Time.time;
-        leftSpawnScreenPercentageBoundarie = 0.6f;
+        leftSpawnScreenPercentageBoundarie = 0.06f;
         rightSpawnScreenPercentageBoundarie = 0.44f;
 
         screenSize = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
@@ -69,7 +69,7 @@ public class Manager : MonoBehaviour
 
             if (spawnTimer > 0.5f)
             {
-                spawnTimer -= 0.1f;
+                spawnTimer -= 0.05f;
             }
             timer = Time.time;
         }
