@@ -609,9 +609,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roots:
   - {fileID: 1624318456506205263, guid: 037bc55d238a7394b80bfed6baabb564, type: 3}
-  - {fileID: 3184439342535892810, guid: 4480879cb69da784889ff4a6f5b60b42, type: 3}
-  - {fileID: 5944430293115354172, guid: f3f7ddfe4f01a184e865b44426bc0d34, type: 3}
   - {fileID: 5944430293115354172, guid: c3150e978e663f04190aa2e71b33ee19, type: 3}
+  - {fileID: 3184439342535892810, guid: 4480879cb69da784889ff4a6f5b60b42, type: 3}
   - {fileID: 5944430293115354172, guid: 8de80116056b52443b28bc1610c12d23, type: 3}
   - {fileID: 5944430293115354172, guid: f3f7ddfe4f01a184e865b44426bc0d34, type: 3}
   rootsImages:
@@ -1211,7 +1210,6 @@ GameObject:
   - component: {fileID: 1508700914}
   - component: {fileID: 1508700913}
   - component: {fileID: 1508700918}
-  - component: {fileID: 1508700919}
   m_Layer: 6
   m_Name: player_1
   m_TagString: Untagged
@@ -1381,22 +1379,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c87f7c7dd36feb4083dccc8247e5654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RootsOnCauldron: []
   GrabPoint: {fileID: 1389742488}
   GrabbedObjectYValue: 0
---- !u!114 &1508700919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1508700911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c87f7c7dd36feb4083dccc8247e5654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrabPoint: {fileID: 0}
-  GrabbedObjectYValue: 0
+  GrabbedObjectXValue: 0
+  manager: {fileID: 571550490}
 --- !u!1 &1926353694
 GameObject:
   m_ObjectHideFlags: 0

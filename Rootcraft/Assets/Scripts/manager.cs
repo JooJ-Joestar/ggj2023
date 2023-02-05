@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
@@ -54,6 +55,108 @@ public class Manager : MonoBehaviour
 
         screenSize = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         spawnPosition = new Vector2(screenSize.x * UnityEngine.Random.Range(leftSpawnScreenPercentageBoundarie, rightSpawnScreenPercentageBoundarie), 10);
+    }
+
+    public void OrderToRemove(List<string> rootNameList)
+    {
+        bool isOrderRemoved = false;
+
+        foreach (int[] order in orders)
+        {
+            List<int> orderAux = order.ToList();
+
+            List<int> rootNameIndexes = new List<int>();
+
+            foreach(string rootName in rootNameList)
+            {
+                string rootNameAux = rootName.Split("(Clone)")[0];
+
+                switch (rootNameAux)
+                {
+                    case "Beat":
+                        rootNameIndexes.Add(0);
+                        break;
+                    case "Carrot":
+                        rootNameIndexes.Add(1);
+                        break;
+                    case "Potato":
+                        rootNameIndexes.Add(2);
+                        break;
+                    case "Cassava":
+                        rootNameIndexes.Add(3);
+                        break;
+                    case "Yam":
+                        rootNameIndexes.Add(4);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (orderAux.Count == rootNameIndexes.Count && orderAux.All(rootNameIndexes.Contains))
+            {
+                isOrderRemoved = true;
+                orders.Remove(order);
+                Destroy(ordersIcons[0]);
+                ordersIcons.RemoveAt(0);
+
+                for (int i = 0; i < ordersIcons.Count; i++)
+                {
+                    Destroy(ordersIcons[i]);
+                }
+
+                break;
+            }
+        }
+
+        if (isOrderRemoved)
+        {
+            float temp = orderIconRightBoundarie;
+
+            for (int i = 0; i < orders.Count; i++)
+            {
+                GameObject obj = (GameObject)Instantiate(topOrderIcon, new Vector2(screenSize.x * temp, -1.5f), Quaternion.identity);
+                ordersIcons.Add(obj);
+                int numberOfIngredients = orders[i].Length;
+                float offset = 0.3f;
+
+                if (numberOfIngredients == 2)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+
+                }
+                else if (numberOfIngredients == 3)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y + offset), Quaternion.identity);
+                    GameObject rootImage3 = (GameObject)Instantiate(rootsImages[orders[i][2]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y + offset), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+                    rootImage3.transform.parent = obj.transform;
+
+
+                }
+                else if (numberOfIngredients == 4)
+                {
+                    GameObject rootImage1 = (GameObject)Instantiate(rootsImages[orders[i][0]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage2 = (GameObject)Instantiate(rootsImages[orders[i][1]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y - offset), Quaternion.identity);
+                    GameObject rootImage3 = (GameObject)Instantiate(rootsImages[orders[i][2]], new Vector2(obj.transform.position.x - offset, obj.transform.position.y + offset), Quaternion.identity);
+                    GameObject rootImage4 = (GameObject)Instantiate(rootsImages[orders[i][3]], new Vector2(obj.transform.position.x + offset, obj.transform.position.y + offset), Quaternion.identity);
+
+                    rootImage1.transform.parent = obj.transform;
+                    rootImage2.transform.parent = obj.transform;
+                    rootImage3.transform.parent = obj.transform;
+                    rootImage4.transform.parent = obj.transform;
+                }
+
+                temp -= spaceBetweenIcons;
+            }
+        }
     }
 
     void Update()

@@ -7,15 +7,28 @@ public class CollisionDetector : MonoBehaviour
 {
     bool IsGrabbed;
     string GrabbedRootName;
+    public List<string> RootsOnCauldron;
     GameObject GrabbedRoot;
     public Transform GrabPoint;
     public float GrabbedObjectYValue;
+    public float GrabbedObjectXValue;
+    public Manager manager;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             GrabAndDrop();
+        }
+
+        if (GrabbedRoot != null && IsGrabbed)
+        {
+            GrabbedRoot.transform.localPosition = GrabPoint.localPosition;
+        }
+
+        if (RootsOnCauldron.Count > 4)
+        {
+            RootsOnCauldron = new List<string>();
         }
     }
 
@@ -28,10 +41,13 @@ public class CollisionDetector : MonoBehaviour
         }
         else
         {
-            IsGrabbed = true;
-            GrabbedRoot.transform.parent = transform;
-            GrabbedObjectYValue = GrabbedRoot.transform.position.y;
-            GrabbedRoot.transform.localPosition = GrabPoint.localPosition;
+            if (GrabbedRoot != null)
+            {
+                IsGrabbed = true;
+                GrabbedRoot.transform.parent = transform;
+                GrabbedObjectYValue = GrabbedRoot.transform.position.y;
+                GrabbedObjectXValue = GrabbedRoot.transform.position.x;
+            }
         }
     }
 
@@ -42,21 +58,18 @@ public class CollisionDetector : MonoBehaviour
             GrabbedRoot = collision.gameObject;
             GrabbedRootName = GrabbedRoot.name;
         }
-        if (collision.gameObject.tag == "Cauldron")
+        else if (collision.gameObject.tag == "Cauldron" && IsGrabbed)
         {
-            if (IsGrabbed)
+            if (GrabbedRoot != null)
             {
-                Debug.Log(GrabbedRootName);
+                Destroy(GrabbedRoot);
+                RootsOnCauldron.Add(GrabbedRootName);
+
                 IsGrabbed = false;
+                GrabbedRootName = "";
+
+                manager.OrderToRemove(RootsOnCauldron);
             }
         }
     }
-
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Root")
-    //    {
-    //        IsRootStayed = true;
-    //    }
-    //}
 }
